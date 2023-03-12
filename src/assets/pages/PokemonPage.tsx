@@ -24,12 +24,18 @@ export default function PokemonPage() {
 
   useEffect(() => {
     // Get the details of the Pokemon -> Call API
-    PokemonCallSingle(Number(id)).then((response) => {
-      // Set the details of the Pokemon
-      setDetailsOfPokemon(response),
-        // Set Loading to false
-        setLoading(false);
-    });
+    PokemonCallSingle(Number(id))
+      .then((response) => {
+        // Set the details of the Pokemon
+        setDetailsOfPokemon(response.data),
+          // Set Loading to false
+          setLoading(false);
+      })
+      .catch((error) => {
+        if (error.code === "ERR_BAD_REQUEST") {
+          window.location.href = "/NotFound";
+        }
+      });
   }, [id]);
 
   const addToMyTeam = useCallback(() => {
