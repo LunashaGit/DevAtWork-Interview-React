@@ -15,6 +15,7 @@ export default function Back() {
             strokeWidth={2}
             d="M10 19l-7-7m0 0l7-7m-7 7h18"
           />
+          {/* Arrow SVG for return Back */}
         </svg>
         Back to the homepage
       </a>
