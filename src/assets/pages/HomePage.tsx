@@ -12,7 +12,7 @@ export default function HomePage() {
   // State -> 151 Pokemons With Type Pokemon
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
   // Loading State
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   // Search State
   const [search, setSearch] = useState<string>("");
   // SearchList State
@@ -33,7 +33,7 @@ export default function HomePage() {
       setPokemon(response),
         setSearchList(response),
         // Set Loading to false
-        setLoading(false);
+        setIsLoading(false);
     });
   }, []);
 
@@ -51,9 +51,9 @@ export default function HomePage() {
       <h1 className="text-3xl">Pokedex</h1>
       <Search search={search} searchPokemon={searchPokemon} />
       {/* If Loading is true -> Show Loading */}
-      {loading && <p className="text-center">Loading...</p>}
+      {isLoading && <p className="text-center">Loading...</p>}
       {/* If Loading is false -> Show the Pokemon */}
-      {!loading && (
+      {!isLoading && (
         <>
           <a href="/myteam">
             <div className="flex flex-col justify-end shadow-xl rounded-xl p-4 h-[130px] text-left bg-violet-300 text-white">

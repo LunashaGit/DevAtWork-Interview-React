@@ -18,7 +18,7 @@ export default function PokemonPage() {
     {} as Pokemon
   );
   // State -> Loading
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   // Get the id from the URL -> /details/:id ( :id = id of the Pokemon )
   const { id } = useParams();
 
@@ -29,7 +29,7 @@ export default function PokemonPage() {
         // Set the details of the Pokemon
         setDetailsOfPokemon(response.data),
           // Set Loading to false
-          setLoading(false);
+          setIsLoading(false);
       })
       .catch((error) => {
         // If the Pokemon doesn't exist -> Redirect to the NotFound page
@@ -83,9 +83,9 @@ export default function PokemonPage() {
       <Back />
       <h1 className="text-3xl">Details</h1>
       {/* If Loading is true -> Show Loading */}
-      {loading && <p className="text-center">Loading...</p>}
+      {isLoading && <p className="text-center">Loading...</p>}
       {/* If Loading is false -> Show the Pokemon */}
-      {!loading && (
+      {!isLoading && (
         <div className="flex flex-col gap-4 justify-center items-center">
           <h2 className="text-2xl">
             {/* Capitalize the first letter of the name of the Pokemon */}
