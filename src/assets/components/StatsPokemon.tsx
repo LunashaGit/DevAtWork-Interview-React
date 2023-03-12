@@ -14,9 +14,12 @@ export default function StatsPokemon(props: Pokemon) {
     <div className="flex flex-col gap-4 min-w-[440px] shadow-lg rounded-lg p-8">
       <ul className="flex flex-col gap-4">
         {/* Show the stats of the pokemon */}
-        {props.stats.map((stat) => {
+        {props.stats.map((stat, index: number) => {
           return (
-            <li className="flex flex-row justify-between items-center">
+            <li
+              key={index}
+              className="flex flex-row justify-between items-center"
+            >
               <p className="text-lg text-gray-400">{stat.stat.name}</p>
               <p className="text-lg">{stat.base_stat}</p>
             </li>

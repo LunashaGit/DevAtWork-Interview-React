@@ -13,18 +13,20 @@ type Pokemon = {
 };
 
 export default function InfosPokemon(props: Pokemon) {
-  console.log(props);
   return (
     <div className="flex flex-col gap-4 min-w-[440px] shadow-lg rounded-lg p-8">
       <div className="flex flex-row gap-2 justify-between items-center">
         {/* Show the types of the pokemon */}
         <h1 className="text-lg text-gray-400">Types</h1>
         <ul className="flex flex-wrap gap-4 justify-center">
-          {props.types.map((type) => {
+          {props.types.map((type, index: number) => {
             // Set the color of the type
             const color = ColorTypes(type);
             return (
-              <li className={color + " text-center rounded-full px-2 py-1"}>
+              <li
+                key={index}
+                className={color + " text-center rounded-full px-2 py-1"}
+              >
                 {type.type.name}
               </li>
             );
