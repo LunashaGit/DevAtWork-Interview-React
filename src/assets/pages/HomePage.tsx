@@ -10,13 +10,13 @@ import { Pokemon } from "../types/Pokemon";
 
 export default function HomePage() {
   // State -> 151 Pokemons With Type Pokemon
-  const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   // Loading State
   const [isLoading, setIsLoading] = useState<boolean>(true);
   // Search State
   const [search, setSearch] = useState<string>("");
   // SearchList State
-  const [searchList, setSearchList] = useState<Pokemon[]>(pokemon);
+  const [searchList, setSearchList] = useState<Pokemon[]>(pokemonList);
 
   // Search Function
   const searchPokemon = useCallback(
@@ -30,7 +30,7 @@ export default function HomePage() {
   useEffect(() => {
     // Get the first 151 Pokemon -> Call API
     PokemonCall.then((response) => {
-      setPokemon(response),
+      setPokemonList(response),
         setSearchList(response),
         // Set Loading to false
         setIsLoading(false);
@@ -39,7 +39,7 @@ export default function HomePage() {
 
   useEffect(() => {
     // Filter the pokemon array by the value of the input
-    const filteredPokemon = pokemon.filter((pokemon) => {
+    const filteredPokemon = pokemonList.filter((pokemon) => {
       return pokemon.name.toLowerCase().includes(search.toLowerCase());
     });
     // Set the filtered pokemon array to the pokemon state
