@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 // Import Components
 import Footer from "../components/Footer";
 import Back from "../components/Back";
+import InfosPokemon from "../components/InfosPokemon";
+import StatsPokemon from "../components/StatsPokemon";
 // Import API
 import PokemonCallSingle from "../api/PokemonCallSingle";
 // Import Types
-import { Pokemon } from "../types/Pokemon";
-// Import Functions
-import ColorTypes from "../hooks/ColorTypes";
+import { DetailsPokemon as Pokemon } from "../types/DetailsPokemon";
 
 export default function PokemonPage() {
   // State -> Details of the Pokemon
@@ -48,19 +48,23 @@ export default function PokemonPage() {
           <img
             src={detailsOfPokemon.sprites.front_default}
             alt={detailsOfPokemon.name}
-            className="w-40 shadow-lg rounded-full"
+            className="w-40"
           />
-          <ul className="flex flex-wrap gap-4 justify-center">
-            {detailsOfPokemon.types.map((type) => {
-              // Set the color of the type
-              const color = ColorTypes(type);
-              return (
-                <li className={color + " text-center rounded-md p-2"}>
-                  {type.type.name}
-                </li>
-              );
-            })}
-          </ul>
+          <div className="flex flex-row justify-between gap-8">
+            <article>
+              <h6 className="text-sm text-gray-400">Infos</h6>
+              <InfosPokemon
+                types={detailsOfPokemon.types}
+                number={detailsOfPokemon.id}
+                height={detailsOfPokemon.height}
+                weight={detailsOfPokemon.weight}
+              />
+            </article>
+            <article>
+              <h6 className="text-sm text-gray-400">Stats</h6>
+              <StatsPokemon stats={detailsOfPokemon.stats} />
+            </article>
+          </div>
         </div>
       )}
       <Footer />
