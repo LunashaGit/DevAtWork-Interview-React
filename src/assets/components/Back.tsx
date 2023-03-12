@@ -1,7 +1,10 @@
+// Import Packages
+import { Link } from "react-router-dom";
+
 export default function Back() {
   return (
     <>
-      <a className="flex flex-row gap-4" href="/">
+      <Link className="flex flex-row gap-4" to="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -18,7 +21,7 @@ export default function Back() {
           {/* Arrow SVG for return Back */}
         </svg>
         Back to the homepage
-      </a>
+      </Link>
     </>
   );
 }
