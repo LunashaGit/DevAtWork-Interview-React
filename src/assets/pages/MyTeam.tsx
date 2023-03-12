@@ -17,6 +17,7 @@ type Pokemon = {
 
 export default function MyTeam() {
   const [team, setTeam] = useState<Pokemon[]>(
+    // Team by localstorage or empty array
     JSON.parse(localStorage.getItem("team") || "[]")
   );
 
@@ -27,6 +28,7 @@ export default function MyTeam() {
       {team.length > 0 ? (
         <ul className="flex flex-wrap gap-4 justify-center">
           {team.map((pokemon) => (
+            // Show the CardPokemon component for each pokemon in the team
             <CardPokemon
               id={pokemon.id}
               name={pokemon.name}
@@ -36,6 +38,7 @@ export default function MyTeam() {
           ))}
         </ul>
       ) : (
+        // If the team is empty -> Show this
         <p className="text-center">Your team is empty</p>
       )}
     </div>
