@@ -20,14 +20,14 @@ export default function AddToMyTeam({
   const action = isInTeam ? "Remove from my team" : "Add to my team";
 
   // Searching inside the Array of Objects if the name of the pokemon is in the local storage
-  const [myTeam, setTeam] = useState<boolean>(isInTeam);
+  const [isInMyTeam, setIsInMyTeam] = useState<boolean>(isInTeam);
 
   return (
     <>
       <button
         onClick={() => {
           onClick();
-          setTeam(!myTeam);
+          setIsInMyTeam(!isInMyTeam);
         }}
         className="mx-auto bg-black rounded-lg text-white py-2 px-4 hover:bg-gray-700"
         disabled={
