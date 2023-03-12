@@ -32,6 +32,7 @@ export default function PokemonPage() {
           setLoading(false);
       })
       .catch((error) => {
+        // If the Pokemon doesn't exist -> Redirect to the NotFound page
         if (error.code === "ERR_BAD_REQUEST") {
           window.location.href = "/NotFound";
         }
