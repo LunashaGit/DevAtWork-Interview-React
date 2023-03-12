@@ -54,19 +54,32 @@ export default function HomePage() {
       {loading && <p className="text-center">Loading...</p>}
       {/* If Loading is false -> Show the Pokemon */}
       {!loading && (
-        <ul className="flex flex-wrap gap-4 justify-center">
-          {/* Map over the pokemon array and show the CardPokemon component */}
-          {searchList.map((pokemon) => {
-            return (
-              <CardPokemon
-                id={pokemon.id}
-                name={pokemon.name}
-                types={pokemon.types}
-                sprites={pokemon.sprites}
-              />
-            );
-          })}
-        </ul>
+        <>
+          <a href="/myteam">
+            <div className="flex flex-col justify-end shadow-xl rounded-xl p-4 h-[130px] text-left bg-violet-300 text-white">
+              <h1>My Team</h1>
+              <h6>
+                {localStorage.getItem("team")
+                  ? JSON.parse(localStorage.getItem("team") || "[]").length
+                  : 0}{" "}
+                Pokemons
+              </h6>
+            </div>
+          </a>
+          <ul className="flex flex-wrap gap-4 justify-center">
+            {/* Map over the pokemon array and show the CardPokemon component */}
+            {searchList.map((pokemon) => {
+              return (
+                <CardPokemon
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  types={pokemon.types}
+                  sprites={pokemon.sprites}
+                />
+              );
+            })}
+          </ul>
+        </>
       )}
       <Footer />
     </div>

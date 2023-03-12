@@ -14,7 +14,7 @@ type Pokemon = {
 
 export default function InfosPokemon(props: Pokemon) {
   return (
-    <div className="flex flex-col gap-4 min-w-[440px] shadow-lg rounded-lg p-8">
+    <div className="flex flex-col gap-4 min-w-[200px] sm:min-w-[440px] shadow-lg rounded-lg p-8">
       <div className="flex flex-row gap-2 justify-between items-center">
         {/* Show the types of the pokemon */}
         <h1 className="text-lg text-gray-400">Types</h1>
@@ -25,7 +25,9 @@ export default function InfosPokemon(props: Pokemon) {
             return (
               <li
                 key={index}
-                className={color + " text-center rounded-full px-2 py-1"}
+                className={
+                  color + " text-center rounded-full px-2 py-1 text-white"
+                }
               >
                 {type.type.name}
               </li>

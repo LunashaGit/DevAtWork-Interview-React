@@ -1,11 +1,12 @@
 // Import Packages
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 // Import Components
 import Footer from "../components/Footer";
 import Back from "../components/Back";
 import InfosPokemon from "../components/InfosPokemon";
 import StatsPokemon from "../components/StatsPokemon";
+import AddToMyTeam from "../components/AddToMyTeam";
 // Import API
 import PokemonCallSingle from "../api/PokemonCallSingle";
 // Import Types
@@ -16,7 +17,6 @@ export default function PokemonPage() {
   const [detailsOfPokemon, setDetailsOfPokemon] = useState<Pokemon>(
     {} as Pokemon
   );
-  console.log(detailsOfPokemon);
   // State -> Loading
   const [loading, setLoading] = useState<boolean>(true);
   // Get the id from the URL -> /details/:id ( :id = id of the Pokemon )
@@ -32,6 +32,45 @@ export default function PokemonPage() {
     });
   }, [id]);
 
+  const addToMyTeam = useCallback(() => {
+    // Get the team from the local storage
+    const team = JSON.parse(localStorage.getItem("team") || "[]");
+    // If the team includes the name of the Pokemon -> Remove it
+    if (
+      team.some(
+        (pokemon: { name: string }) => pokemon.name === detailsOfPokemon.name
+      )
+    ) {
+      // Remove the Pokemon from the team
+      const newTeam = team.filter(
+        (pokemon: { name: string }) => pokemon.name !== detailsOfPokemon.name
+      );
+      // Set the new team to the local storage
+      localStorage.setItem("team", JSON.stringify(newTeam));
+    } else {
+      // If the team doesn't include the name of the Pokemon -> Add it
+      // Add the name of the Pokemon to the team
+      team.push({
+        id: detailsOfPokemon.id,
+        name: detailsOfPokemon.name,
+        sprites: {
+          front_default: detailsOfPokemon.sprites.front_default,
+        },
+        types: detailsOfPokemon.types.map((ele) => {
+          // Not The same API, Need To structure the data & it's working
+          const type = {
+            slot: ele.slot,
+            type: {
+              name: ele.type.name,
+            },
+          };
+          return type;
+        }),
+      });
+      // Set the new team to the local storage
+      localStorage.setItem("team", JSON.stringify(team));
+    }
+  }, [detailsOfPokemon.name]);
   return (
     <div className="flex flex-col gap-12 py-10">
       <Back />
@@ -52,7 +91,7 @@ export default function PokemonPage() {
             alt={detailsOfPokemon.name}
             className="w-40"
           />
-          <div className="flex flex-row justify-between gap-8">
+          <div className="flex flex-col sm:flex-row justify-between gap-8">
             {/* Show the Infos of the Pokemon */}
             <article>
               <h6 className="text-sm text-gray-400">Infos</h6>
@@ -71,6 +110,8 @@ export default function PokemonPage() {
           </div>
         </div>
       )}
+      {/* Show the button to add the Pokemon to the team */}
+      <AddToMyTeam name={detailsOfPokemon.name} onClick={addToMyTeam} />
       <Footer />
     </div>
   );

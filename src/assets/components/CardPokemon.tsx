@@ -7,7 +7,7 @@ export default function CardPokemon(props: Pokemon) {
   return (
     <a
       href={`/details/${props.id}`}
-      className="flex flex-row items-center justify-between shadow-xl rounded-xl p-4 w-[440px] h-[130px] text-left"
+      className="flex flex-row items-center justify-between shadow-xl rounded-xl p-4 sm:w-[440px] h-[130px] text-left"
       key={props.id}
     >
       {/* Show the image of the pokemon */}
@@ -36,7 +36,7 @@ export default function CardPokemon(props: Pokemon) {
           const color = ColorTypes(type);
           return (
             <p
-              className={color + " p-2 text-sm rounded-full"}
+              className={color + " p-2 text-sm rounded-full text-white"}
               key={type.type.name}
             >
               {type.type.name}

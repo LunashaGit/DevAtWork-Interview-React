@@ -11,7 +11,7 @@ type Pokemon = {
 
 export default function StatsPokemon(props: Pokemon) {
   return (
-    <div className="flex flex-col gap-4 min-w-[440px] shadow-lg rounded-lg p-8">
+    <div className="flex flex-col gap-4 min-w-[200px] sm:min-w-[440px] shadow-lg rounded-lg p-8">
       <ul className="flex flex-col gap-4">
         {/* Show the stats of the pokemon */}
         {props.stats.map((stat, index: number) => {
