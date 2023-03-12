@@ -62,7 +62,13 @@ export default function HomePage() {
                 {localStorage.getItem("team")
                   ? JSON.parse(localStorage.getItem("team") || "[]").length
                   : 0}{" "}
-                Pokemons
+                {/* Calculate how much have pokemon in the localStorage  */}
+                {JSON.parse(localStorage.getItem("team") || "[]").length ===
+                  1 ||
+                JSON.parse(localStorage.getItem("team") || "[]").length === 0
+                  ? "Pokemon"
+                  : "Pokemons"}
+                {/* If the length is 1 or 0 -> Pokemon else -> Pokemons */}
               </h6>
             </div>
           </a>
