@@ -41,6 +41,7 @@ export default function MyTeam() {
         // If the team is empty -> Show this
         <p className="text-center">Your team is empty</p>
       )}
+      <Footer />
     </div>
   );
 }
