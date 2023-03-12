@@ -42,15 +42,18 @@ export default function PokemonPage() {
       {!loading && (
         <div className="flex flex-col gap-4 justify-center items-center">
           <h2 className="text-2xl">
+            {/* Capitalize the first letter of the name of the Pokemon */}
             {detailsOfPokemon.name.charAt(0).toUpperCase() +
               detailsOfPokemon.name.slice(1)}
           </h2>
+          {/* Show the image of the Pokemon */}
           <img
             src={detailsOfPokemon.sprites.front_default}
             alt={detailsOfPokemon.name}
             className="w-40"
           />
           <div className="flex flex-row justify-between gap-8">
+            {/* Show the Infos of the Pokemon */}
             <article>
               <h6 className="text-sm text-gray-400">Infos</h6>
               <InfosPokemon
@@ -60,6 +63,7 @@ export default function PokemonPage() {
                 weight={detailsOfPokemon.weight}
               />
             </article>
+            {/* Show the Stats of the Pokemon */}
             <article>
               <h6 className="text-sm text-gray-400">Stats</h6>
               <StatsPokemon stats={detailsOfPokemon.stats} />
