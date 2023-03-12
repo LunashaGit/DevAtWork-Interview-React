@@ -23,7 +23,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-12 my-10">
+    <div className="flex flex-col gap-12 py-10">
       <h1 className="text-3xl">Pokedex</h1>
       {/* If Loading is true -> Show Loading */}
       {loading && <p className="text-center">Loading...</p>}
