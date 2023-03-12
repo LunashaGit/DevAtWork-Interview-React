@@ -2,6 +2,27 @@
 
 The Project is for an assignment of DevAtWork.
 
+# Table of Contents
+
+- [DevAtWork-Interview-React](#devatwork-interview-react)
+- [Table of Contents](#table-of-contents)
+  - [The Goal of this project](#the-goal-of-this-project)
+  - [The Stack](#the-stack)
+  - [Features](#features)
+  - [What i used in React](#what-i-used-in-react)
+  - [Functionalities](#functionalities)
+    - [Search Pokemon](#search-pokemon)
+    - [Add Pokemon to My Team](#add-pokemon-to-my-team)
+  - [The API](#the-api)
+  - [The Design](#the-design)
+    - [The Homepage](#the-homepage)
+    - [The Single Page](#the-single-page)
+    - [My Team Page](#my-team-page)
+    - [Error Page (404)](#error-page-404)
+  - [How to run the project](#how-to-run-the-project)
+    - [Clone & Run the project](#clone--run-the-project)
+  - [Contact](#contact)
+
 ## The Goal of this project
 
 The client is a bigged fan of the first generation "Pokemon". He wanted to create a website, to see all the Pokemon of the first generation. He also wanted to be able to search for a specific Pokemon and see its details. He also wanted to be able to add a Pokemon to his team.
