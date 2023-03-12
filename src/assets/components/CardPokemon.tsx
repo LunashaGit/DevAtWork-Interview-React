@@ -1,3 +1,5 @@
+// Import Packages
+import { Link } from "react-router-dom";
 // Import Types
 import { Pokemon } from "../types/Pokemon";
 // Import Functions
@@ -5,8 +7,8 @@ import ColorTypes from "../hooks/ColorTypes";
 
 export default function CardPokemon(props: Pokemon) {
   return (
-    <a
-      href={`/details/${props.id}`}
+    <Link
+      to={`/details/${props.id}`}
       className="flex flex-row items-center justify-between shadow-xl rounded-xl p-4 sm:w-[440px] h-[130px] text-left"
       key={props.id}
     >
@@ -44,6 +46,6 @@ export default function CardPokemon(props: Pokemon) {
           );
         })}
       </div>
-    </a>
+    </Link>
   );
 }
