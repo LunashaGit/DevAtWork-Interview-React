@@ -1,9 +1,8 @@
 import Footer from "../components/Footer";
-
-export default function HomePage() {
+export default function PokemonPage() {
   return (
     <div>
-      <h1 className="text-3xl">Pokedex</h1>
+      <h1>Details</h1>
       <Footer />
     </div>
   );
